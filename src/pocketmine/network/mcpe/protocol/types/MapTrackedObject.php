@@ -24,7 +24,7 @@ declare(strict_types=1);
 namespace pocketmine\network\mcpe\protocol\types;
 
 class MapTrackedObject{
-	public const TYPE_ENTITY = 0;
+	public const TYPE_PLAYER = 0;
 	public const TYPE_BLOCK = 1;
 
 	/** @var int */

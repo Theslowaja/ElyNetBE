@@ -24,6 +24,8 @@ declare(strict_types=1);
 namespace pocketmine\network\mcpe;
 
 use pocketmine\event\server\DataPacketReceiveEvent;
+use pocketmine\item\maps\MapData;
+use pocketmine\item\maps\MapManager;
 use pocketmine\network\mcpe\protocol\ActorEventPacket;
 use pocketmine\network\mcpe\protocol\ActorPickRequestPacket;
 use pocketmine\network\mcpe\protocol\AdventureSettingsPacket;
@@ -32,6 +34,7 @@ use pocketmine\network\mcpe\protocol\BlockActorDataPacket;
 use pocketmine\network\mcpe\protocol\BlockPickRequestPacket;
 use pocketmine\network\mcpe\protocol\BookEditPacket;
 use pocketmine\network\mcpe\protocol\BossEventPacket;
+use pocketmine\network\mcpe\protocol\ClientboundMapItemDataPacket;
 use pocketmine\network\mcpe\protocol\ClientToServerHandshakePacket;
 use pocketmine\network\mcpe\protocol\CommandBlockUpdatePacket;
 use pocketmine\network\mcpe\protocol\CommandRequestPacket;
@@ -214,7 +217,24 @@ class PlayerNetworkSessionAdapter extends NetworkSession{
 	}
 
 	public function handleMapInfoRequest(MapInfoRequestPacket $packet) : bool{
-		return false; //TODO
+		$data = MapManager::getMapDataById($packet->mapId);
+		if($data instanceof MapData){
+			// this is for first appearance
+			$pk = new ClientboundMapItemDataPacket();
+			$pk->height = $pk->width = 128;
+			$pk->dimensionId = $data->getDimension();
+			$pk->scale = $data->getScale();
+			$pk->colors = $data->getColors();
+			$pk->mapId = $data->getId();
+			$pk->decorations = $data->getDecorations();
+			$pk->trackedEntities = $data->getTrackedObjects();
+
+			$this->player->sendDataPacket($pk);
+			
+			return true;
+			
+	    }	
+		return false; 
 	}
 
 	public function handleRequestChunkRadius(RequestChunkRadiusPacket $packet) : bool{
