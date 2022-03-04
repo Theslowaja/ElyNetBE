@@ -54,11 +54,13 @@ abstract class Tile extends Position{
 	public const BANNER = "Banner";
 	public const BED = "Bed";
 	public const BREWING_STAND = "BrewingStand";
+	public const CAULDRON = "Cauldron";
 	public const CHEST = "Chest";
 	public const ENCHANT_TABLE = "EnchantTable";
 	public const ENDER_CHEST = "EnderChest";
 	public const FLOWER_POT = "FlowerPot";
 	public const FURNACE = "Furnace";
+	public const HOPPER = "Hopper";
 	public const ITEM_FRAME = "ItemFrame";
 	public const MOB_SPAWNER = "MobSpawner";
 	public const SIGN = "Sign";
@@ -95,11 +97,13 @@ abstract class Tile extends Position{
 	public static function init(){
 		self::registerTile(Banner::class, [self::BANNER, "minecraft:banner"]);
 		self::registerTile(Bed::class, [self::BED, "minecraft:bed"]);
+		self::registerTile(Cauldron::class, [self::CAULDRON, "minecraft:cauldron"]);
 		self::registerTile(Chest::class, [self::CHEST, "minecraft:chest"]);
 		self::registerTile(EnchantTable::class, [self::ENCHANT_TABLE, "minecraft:enchanting_table"]);
 		self::registerTile(EnderChest::class, [self::ENDER_CHEST, "minecraft:ender_chest"]);
 		self::registerTile(FlowerPot::class, [self::FLOWER_POT, "minecraft:flower_pot"]);
 		self::registerTile(Furnace::class, [self::FURNACE, "minecraft:furnace"]);
+		self::registerTile(Hopper::class, [self::HOPPER, "minecraft:hopper"]);
 		self::registerTile(ItemFrame::class, [self::ITEM_FRAME]); //this is an entity in PC
 		self::registerTile(Sign::class, [self::SIGN, "minecraft:sign"]);
 		self::registerTile(Skull::class, [self::SKULL, "minecraft:skull"]);

@@ -116,6 +116,8 @@ class BlockFactory{
 		self::registerBlock(new Sandstone());
 		self::registerBlock(new NoteBlock());
 		self::registerBlock(new Bed());
+		self::registerBlock(new Cauldron());
+		self::registerBlock(new EndPortal());
 		self::registerBlock(new PoweredRail());
 		self::registerBlock(new DetectorRail());
 		//TODO: STICKY_PISTON
@@ -260,6 +262,7 @@ class BlockFactory{
 		self::registerBlock(new Prismarine());
 		self::registerBlock(new SeaLantern());
 		self::registerBlock(new HayBale());
+		self::registerBlock(new Hopper());
 		self::registerBlock(new Carpet());
 		self::registerBlock(new HardenedClay());
 		self::registerBlock(new Coal());
