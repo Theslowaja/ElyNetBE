@@ -252,6 +252,7 @@ class ItemFactory{
 		//TODO: ICE_BOMB
 
 		//TODO: TRIDENT
+		self::registerItem(new Spyglass(ItemIds::SPYGLASS, 0, "Spyglass"));
 
 		self::registerItem(new Beetroot());
 		self::registerItem(new BeetrootSeeds());
