@@ -117,7 +117,6 @@ class BlockFactory{
 		self::registerBlock(new NoteBlock());
 		self::registerBlock(new Bed());
 		self::registerBlock(new Cauldron());
-		self::registerBlock(new EndPortal());
 		self::registerBlock(new PoweredRail());
 		self::registerBlock(new DetectorRail());
 		//TODO: STICKY_PISTON

@@ -152,7 +152,6 @@ class ItemFactory{
 		self::registerItem(new Dye());
 		self::registerItem(new Item(Item::BONE, 0, "Bone"));
 		self::registerItem(new Item(Item::SUGAR, 0, "Sugar"));
-		self::registerItem(new Spyglass(Item::SPYGLASS, 0, "Spyglass"));
 		self::registerItem(new ItemBlock(Block::CAKE_BLOCK, 0, Item::CAKE));
 		self::registerItem(new Bed());
 		self::registerItem(new ItemBlock(Block::REPEATER_BLOCK, 0, Item::REPEATER));
@@ -266,7 +265,7 @@ class ItemFactory{
 		self::registerItem(new GoldenAppleEnchanted());
 		self::registerItem(new Item(Item::HEART_OF_THE_SEA, 0, "Heart of the Sea"));
 		self::registerItem(new Item(Item::TURTLE_SHELL_PIECE, 0, "Scute"));
-		//TODO: TURTLE_HELMET
+		self::registerItem(new TurtleHelmet());
 
 		//TODO: COMPOUND
 		//TODO: RECORD_13
