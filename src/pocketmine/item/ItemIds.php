@@ -246,7 +246,7 @@ interface ItemIds extends BlockIds{
 	public const ACACIA_SIGN = 475;
 	public const DARKOAK_SIGN = 476;
 	public const SWEET_BERRIES = 477;
-
+    public const CAMERA = 498;
 	public const COMPOUND = 499;
 	public const RECORD_13 = 500;
 	public const RECORD_CAT = 501;

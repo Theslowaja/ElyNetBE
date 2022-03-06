@@ -87,6 +87,7 @@ class ItemFactory{
 		self::registerItem(new Axe(Item::DIAMOND_AXE, 0, "Diamond Axe", TieredTool::TIER_DIAMOND));
 		self::registerItem(new Stick());
 		self::registerItem(new Bowl());
+		self::registerItem(new Camera());
 		self::registerItem(new MushroomStew());
 		self::registerItem(new Sword(Item::GOLDEN_SWORD, 0, "Gold Sword", TieredTool::TIER_GOLD));
 		self::registerItem(new Shovel(Item::GOLDEN_SHOVEL, 0, "Gold Shovel", TieredTool::TIER_GOLD));
@@ -316,7 +317,7 @@ class ItemFactory{
 	 * @throws \TypeError
 	 */
 	public static function get(int $id, int $meta = 0, int $count = 1, $tags = null) : Item{
-		if (!is_string($tags) and !$tags instanceof CompoundTag and $tags !== null){
+		if (!is_string($tags) and (!$tags instanceof CompoundTag) and $tags !== null){
 			throw new \TypeError("`tags` argument must be a string or CompoundTag instance, " . (is_object($tags) ? "instance of " . get_class($tags) : gettype($tags)) . " given");
 		}
 		$listed = self::$list[$id] ?? null;
