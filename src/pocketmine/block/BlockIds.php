@@ -275,5 +275,7 @@ interface BlockIds{
 	public const STRUCTURE_BLOCK = 252;
 
 	public const RESERVED6 = 255;
+	
+	public const BARRIER_BLOCK = 416;
 
 }

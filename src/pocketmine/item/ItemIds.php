@@ -264,5 +264,7 @@ interface ItemIds extends BlockIds{
 	public const SHIELD = 513;
 	
 	public const SPYGLASS = 772;
+	
+	public const BARRIER_ITEM = -161;
 
 }
