@@ -278,6 +278,7 @@ interface BlockIds{
 	
 	public const BARRIER_BLOCK = 416;
 	
+    public const LANTERN = 463;
 	public const NORMAL_CAMPFIRE_BLOCK = 464;
 
 }
