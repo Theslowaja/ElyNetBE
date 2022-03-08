@@ -277,5 +277,7 @@ interface BlockIds{
 	public const RESERVED6 = 255;
 	
 	public const BARRIER_BLOCK = 416;
+	
+	public const NORMAL_CAMPFIRE_BLOCK = 464;
 
 }

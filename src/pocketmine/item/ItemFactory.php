@@ -88,6 +88,7 @@ class ItemFactory{
 		self::registerItem(new Stick());
 		self::registerItem(new Bowl());
 		self::registerItem(new Camera());
+		self::registerItem(new Campfire());
 		self::registerItem(new MushroomStew());
 		self::registerItem(new Sword(Item::GOLDEN_SWORD, 0, "Gold Sword", TieredTool::TIER_GOLD));
 		self::registerItem(new Shovel(Item::GOLDEN_SHOVEL, 0, "Gold Shovel", TieredTool::TIER_GOLD));

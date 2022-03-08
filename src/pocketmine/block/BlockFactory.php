@@ -208,7 +208,6 @@ class BlockFactory{
 		self::registerBlock(new NetherWartPlant());
 		self::registerBlock(new EnchantingTable());
 		self::registerBlock(new BrewingStand());
-		//TODO: CAULDRON_BLOCK
 		//TODO: END_PORTAL
 		self::registerBlock(new EndPortalFrame());
 		self::registerBlock(new EndStone());
@@ -343,6 +342,7 @@ class BlockFactory{
 		self::registerBlock(new Reserved6(Block::RESERVED6, 0, "reserved6"));
 		self::registerBlock(new Placeholder(), true);
 		self::registerBlock(new Barrier());
+		self::registerBlock(new Campfire());
 
 		for($id = 0, $size = self::$fullList->getSize() >> 4; $id < $size; ++$id){
 			if(self::$fullList[$id << 4] === null){
