@@ -54,6 +54,12 @@ class ItemFactory{
 	 */
 	public static function init(){
 		self::$list = new \SplFixedArray(65536);
+		
+		if(!is_array(self::$list)){
+			$list = new \ReflectionProperty(static::class, 'list');
+			$list->setAccessible(true);
+			$list->setValue(self::$list->toArray());
+		}
 
 		self::registerItem(new Shovel(Item::IRON_SHOVEL, 0, "Iron Shovel", TieredTool::TIER_IRON));
 		self::registerItem(new Pickaxe(Item::IRON_PICKAXE, 0, "Iron Pickaxe", TieredTool::TIER_IRON));
@@ -81,6 +87,8 @@ class ItemFactory{
 		self::registerItem(new Axe(Item::DIAMOND_AXE, 0, "Diamond Axe", TieredTool::TIER_DIAMOND));
 		self::registerItem(new Stick());
 		self::registerItem(new Bowl());
+		self::registerItem(new Camera());
+		self::registerItem(new Campfire());
 		self::registerItem(new MushroomStew());
 		self::registerItem(new Sword(Item::GOLDEN_SWORD, 0, "Gold Sword", TieredTool::TIER_GOLD));
 		self::registerItem(new Shovel(Item::GOLDEN_SHOVEL, 0, "Gold Shovel", TieredTool::TIER_GOLD));
@@ -152,7 +160,6 @@ class ItemFactory{
 		self::registerItem(new Dye());
 		self::registerItem(new Item(Item::BONE, 0, "Bone"));
 		self::registerItem(new Item(Item::SUGAR, 0, "Sugar"));
-		self::registerItem(new Spyglass(Item::SPYGLASS, 0, "Spyglass"));
 		self::registerItem(new ItemBlock(Block::CAKE_BLOCK, 0, Item::CAKE));
 		self::registerItem(new Bed());
 		self::registerItem(new ItemBlock(Block::REPEATER_BLOCK, 0, Item::REPEATER));
@@ -184,7 +191,7 @@ class ItemFactory{
 		self::registerItem(new Item(Item::GLISTERING_MELON, 0, "Glistering Melon"));
 		self::registerItem(new SpawnEgg());
 		self::registerItem(new ExperienceBottle());
-		//TODO: FIREBALL
+		self::registerItem(new FireCharge(Item::FIRE_CHARGE, 0, "Fire Charge"));
 		self::registerItem(new WritableBook());
 		self::registerItem(new WrittenBook());
 		self::registerItem(new Item(Item::EMERALD, 0, "Emerald"));
@@ -252,6 +259,7 @@ class ItemFactory{
 		//TODO: ICE_BOMB
 
 		//TODO: TRIDENT
+		self::registerItem(new Spyglass(ItemIds::SPYGLASS, 0, "Spyglass"));
 
 		self::registerItem(new Beetroot());
 		self::registerItem(new BeetrootSeeds());
@@ -265,7 +273,7 @@ class ItemFactory{
 		self::registerItem(new GoldenAppleEnchanted());
 		self::registerItem(new Item(Item::HEART_OF_THE_SEA, 0, "Heart of the Sea"));
 		self::registerItem(new Item(Item::TURTLE_SHELL_PIECE, 0, "Scute"));
-		//TODO: TURTLE_HELMET
+		self::registerItem(new TurtleHelmet());
 
 		//TODO: COMPOUND
 		//TODO: RECORD_13
@@ -310,25 +318,13 @@ class ItemFactory{
 	 * @throws \TypeError
 	 */
 	public static function get(int $id, int $meta = 0, int $count = 1, $tags = null) : Item{
-		if(!is_string($tags) and !($tags instanceof CompoundTag) and $tags !== null){
+		if (!is_string($tags) and (!$tags instanceof CompoundTag) and $tags !== null){
 			throw new \TypeError("`tags` argument must be a string or CompoundTag instance, " . (is_object($tags) ? "instance of " . get_class($tags) : gettype($tags)) . " given");
 		}
-
-		try{
-			/** @var Item|null $listed */
-			$listed = self::$list[self::getListOffset($id)];
-			if($listed !== null){
-				$item = clone $listed;
-			}elseif($id >= 0 and $id < 256){ //intentionally excludes negatives because extended blocks aren't supported yet
-				/* Blocks must have a damage value 0-15, but items can have damage value -1 to indicate that they are
-				 * crafting ingredients with any-damage. */
-				$item = new ItemBlock($id, $meta);
-			}else{
-				$item = new Item($id, $meta);
-			}
-		}catch(\RuntimeException $e){
-			throw new \InvalidArgumentException("Item ID $id is invalid or out of bounds");
-		}
+		$listed = self::$list[$id] ?? null;
+		if($listed !== null) $item = clone $listed;
+		elseif($id < 256) $item = new ItemBlock($id < 0 ? 255 - $id : $id, $meta, $id);
+		else $item = new Item($id, $meta);
 
 		$item->setDamage($meta);
 		$item->setCount($count);
@@ -388,9 +384,9 @@ class ItemFactory{
 	/**
 	 * Returns whether the specified item ID is already registered in the item factory.
 	 */
-	public static function isRegistered(int $id) : bool{
+	public static function isRegistered(int $id ) : bool{
 		if($id < 256){
-			return BlockFactory::isRegistered($id);
+			return BlockFactory::isRegistered($id < 0 ? 255 - $id : $id);
 		}
 		return self::$list[self::getListOffset($id)] !== null;
 	}

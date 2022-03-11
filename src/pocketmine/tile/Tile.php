@@ -107,6 +107,7 @@ abstract class Tile extends Position{
 		self::registerTile(ItemFrame::class, [self::ITEM_FRAME]); //this is an entity in PC
 		self::registerTile(Sign::class, [self::SIGN, "minecraft:sign"]);
 		self::registerTile(Skull::class, [self::SKULL, "minecraft:skull"]);
+		self::registerTile(Placeholder::class);
 	}
 
 	/**
