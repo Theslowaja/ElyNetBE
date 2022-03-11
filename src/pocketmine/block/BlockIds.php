@@ -281,6 +281,7 @@ interface BlockIds{
     public const LANTERN = 463;
 	public const NORMAL_CAMPFIRE_BLOCK = 464;
 	
+	public const SOUL_TORCH = 523;
 	public const SOUL_LANTERN = 524;
 
 }

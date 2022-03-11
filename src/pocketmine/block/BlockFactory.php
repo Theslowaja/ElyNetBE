@@ -345,6 +345,7 @@ class BlockFactory{
 		self::registerBlock(new Campfire());
 		self::registerBlock(new Lantern());
 		self::registerBlock(new SoulLantern());
+		self::registerBlock(new SoulTorch());
 
 		for($id = 0, $size = self::$fullList->getSize() >> 4; $id < $size; ++$id){
 			if(self::$fullList[$id << 4] === null){
