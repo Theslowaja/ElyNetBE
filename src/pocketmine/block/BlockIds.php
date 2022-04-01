@@ -275,12 +275,12 @@ interface BlockIds{
 	public const STRUCTURE_BLOCK = 252;
 
 	public const RESERVED6 = 255;
-	
+
 	public const BARRIER_BLOCK = 416;
-	
-    public const LANTERN = 463;
+
+	public const LANTERN = 463;
 	public const NORMAL_CAMPFIRE_BLOCK = 464;
-	
+
 	public const SOUL_TORCH = 523;
 	public const SOUL_LANTERN = 524;
 

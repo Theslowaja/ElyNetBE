@@ -19,6 +19,7 @@ use pocketmine\math\Vector3;
 use pocketmine\network\mcpe\protocol\LevelEventPacket;
 use pocketmine\network\mcpe\protocol\LevelSoundEventPacket;
 use pocketmine\Player;
+use function count;
 
 class Campfire extends Transparent{
 	use PlaceholderTrait;
@@ -54,7 +55,7 @@ class Campfire extends Transparent{
 		return $this->extinguished;
 	}
 
-	public function setExtinguished(bool $extinguish = true): self{
+	public function setExtinguished(bool $extinguish = true) : self{
 		$this->extinguished = $extinguish;
 		return $this;
 	}

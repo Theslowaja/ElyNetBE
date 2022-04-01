@@ -884,7 +884,7 @@ abstract class NetworkSession{
 	public function handleSubChunkRequest(SubChunkRequestPacket $packet) : bool{
 		return false;
 	}
-	
+
 	public function handlePlayerStartItemCooldown(PlayerStartItemCooldownPacket $packet) : bool{
 		return false;
 	}

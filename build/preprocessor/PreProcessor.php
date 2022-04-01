@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 define("THIS_PATH", realpath(dirname(__FILE__)));
 
 $opts = getopt("", ["path:"]);

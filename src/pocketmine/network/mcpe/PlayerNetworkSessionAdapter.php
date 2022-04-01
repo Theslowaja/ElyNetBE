@@ -230,11 +230,11 @@ class PlayerNetworkSessionAdapter extends NetworkSession{
 			$pk->trackedEntities = $data->getTrackedObjects();
 
 			$this->player->sendDataPacket($pk);
-			
+
 			return true;
-			
-	    }	
-		return false; 
+
+		}
+		return false;
 	}
 
 	public function handleRequestChunkRadius(RequestChunkRadiusPacket $packet) : bool{

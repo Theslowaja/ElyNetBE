@@ -23,14 +23,12 @@ declare(strict_types=1);
 
 namespace pocketmine\item;
 
-use pocketmine\item\Item;
-
 class Camera extends Item{
-	
+
 	public function __construct(int $meta = 0){
 		parent::__construct(498, 0, "Camera");
 	}
-	
+
 	public function getMaxStackSize() : int{
 		return 1;
 	}

@@ -109,8 +109,6 @@ class Color{
 
 	/**
 	 * Mixes the supplied list of colours together to produce a result colour.
-	 *
-	 * @param Color ...$colors
 	 */
 	public static function mix(Color ...$colors) : Color{
 		$count = count($colors);
@@ -129,7 +127,7 @@ class Color{
 
 		return new Color((int) ($r / $count), (int) ($g / $count), (int) ($b / $count), (int) ($a / $count));
 	}
-	
+
 	public function equals(Color $color) : bool{
 		return  $this->r === $color->r and $this->g === $color->g and $this->b === $color->b and $this->a === $color->a;
 	}

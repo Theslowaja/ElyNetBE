@@ -1,5 +1,5 @@
 <?php
-                   
+
 declare(strict_types=1);
 
 namespace pocketmine\item;
@@ -7,9 +7,11 @@ namespace pocketmine\item;
 use pocketmine\item\maps\MapData;
 use pocketmine\item\maps\MapManager;
 use pocketmine\nbt\tag\ByteTag;
-use pocketmine\nbt\tag\LongTag;
 use pocketmine\nbt\tag\IntTag;
+use pocketmine\nbt\tag\LongTag;
 use pocketmine\Player;
+use function boolval;
+use function intval;
 
 class Map extends Item{
 	public const TAG_MAP_IS_SCALING = "map_is_scaling"; // TAG_Byte
@@ -56,9 +58,6 @@ class Map extends Item{
 		MapManager::setMapData($data);
 	}
 
-	/**
-	 * @return int
-	 */
 	public function getMaxStackSize() : int{
 		return 1;
 	}

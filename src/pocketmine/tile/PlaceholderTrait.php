@@ -4,8 +4,13 @@ declare(strict_types=1);
 
 namespace pocketmine\tile;
 
-use pocketmine\block\{Block, BlockFactory, Placeholder, Reserved6};
-use pocketmine\nbt\tag\{ByteTag, CompoundTag, ShortTag};
+use pocketmine\block\Block;
+use pocketmine\block\BlockFactory;
+use pocketmine\block\Placeholder;
+use pocketmine\block\Reserved6;
+use pocketmine\nbt\tag\ByteTag;
+use pocketmine\nbt\tag\CompoundTag;
+use pocketmine\nbt\tag\ShortTag;
 
 trait PlaceholderTrait{
 	protected $block = null;

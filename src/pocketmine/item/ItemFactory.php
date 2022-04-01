@@ -31,6 +31,7 @@ use function defined;
 use function explode;
 use function get_class;
 use function gettype;
+use function is_array;
 use function is_numeric;
 use function is_object;
 use function is_string;
@@ -54,7 +55,7 @@ class ItemFactory{
 	 */
 	public static function init(){
 		self::$list = new \SplFixedArray(65536);
-		
+
 		if(!is_array(self::$list)){
 			$list = new \ReflectionProperty(static::class, 'list');
 			$list->setAccessible(true);

@@ -74,12 +74,12 @@ use pocketmine\nbt\tag\StringTag;
 use pocketmine\network\mcpe\convert\RuntimeBlockMapping;
 use pocketmine\network\mcpe\protocol\AddActorPacket;
 use pocketmine\network\mcpe\protocol\BatchPacket;
-use pocketmine\network\mcpe\protocol\types\DimensionIds;
 use pocketmine\network\mcpe\protocol\DataPacket;
 use pocketmine\network\mcpe\protocol\LevelEventPacket;
 use pocketmine\network\mcpe\protocol\LevelSoundEventPacket;
 use pocketmine\network\mcpe\protocol\SetDifficultyPacket;
 use pocketmine\network\mcpe\protocol\SetTimePacket;
+use pocketmine\network\mcpe\protocol\types\DimensionIds;
 use pocketmine\network\mcpe\protocol\UpdateBlockPacket;
 use pocketmine\Player;
 use pocketmine\plugin\Plugin;
@@ -294,7 +294,7 @@ class Level implements ChunkManager, Metadatable{
 	 * @phpstan-var class-string<\pocketmine\level\generator\Generator>
 	 */
 	private $generator;
-	
+
 	/** @var int */
 	protected $dimension = DimensionIds::OVERWORLD;
 
@@ -2278,11 +2278,9 @@ class Level implements ChunkManager, Metadatable{
 	public function setHeightMap(int $x, int $z, int $value){
 		$this->getChunk($x >> 4, $z >> 4, true)->setHeightMap($x & 0x0f, $z & 0x0f, $value);
 	}
-	
+
 	/**
 	 * Return dimension of Level
-	 *
-	 * @return int
 	 */
 	public function getDimension() : int{
 		return $this->dimension;
@@ -2290,8 +2288,6 @@ class Level implements ChunkManager, Metadatable{
 
 	/**
 	 * Sets dimension of Level
-	 *
-	 * @param int $dimension
 	 */
 	public function setDimension(int $dimension) : void{
 		if($dimension > 2 or $dimension < 0){
@@ -2955,8 +2951,6 @@ class Level implements ChunkManager, Metadatable{
 	}
 
 	/**
-	 * @param Player ...$targets
-	 *
 	 * @return void
 	 */
 	public function sendDifficulty(Player ...$targets){

@@ -8,10 +8,13 @@ use pocketmine\entity\Entity;
 use pocketmine\item\Item;
 use pocketmine\math\AxisAlignedBB;
 use pocketmine\math\Vector3;
-use pocketmine\nbt\tag\{ByteTag, CompoundTag, ShortTag};
+use pocketmine\nbt\tag\ByteTag;
+use pocketmine\nbt\tag\CompoundTag;
+use pocketmine\nbt\tag\ShortTag;
 use pocketmine\Player;
-use pocketmine\tile\{Placeholder as PTile};
 use pocketmine\tile\Tile;
+use pocketmine\tile\{Placeholder as PTile};
+use function assert;
 
 final class Placeholder extends Block{
 	private $default = null;

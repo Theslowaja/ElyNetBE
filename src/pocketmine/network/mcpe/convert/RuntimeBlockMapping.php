@@ -59,10 +59,10 @@ final class RuntimeBlockMapping{
 		}
 		self::$bedrockKnownStates = $list;
 
-        self::registerMappings();
+		self::registerMappings();
 		self::setupLegacyMappings();
 	}
-	
+
 	private static function registerMappings(){
 		$nameToLegacyMap = json_decode(file_get_contents(\pocketmine\RESOURCE_PATH . "vanilla/block_id_map.json"), true);
 		$metaMap = [];
