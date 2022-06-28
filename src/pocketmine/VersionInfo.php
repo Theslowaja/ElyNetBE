@@ -13,7 +13,7 @@
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * @author PocketMine Team
+ * @author PocketMine Te
  * @link http://www.pocketmine.net/
  *
  *
@@ -32,7 +32,7 @@ if(defined('pocketmine\_VERSION_INFO_INCLUDED')){
 }
 const _VERSION_INFO_INCLUDED = true;
 
-const NAME = "ElyNetBE";
+const NAME = "PocketMine-MP";
 const BASE_VERSION = "3.31.0";
 const IS_DEVELOPMENT_BUILD = true;
 const BUILD_CHANNEL = "master";
